@@ -1,4 +1,4 @@
-import { StyleSheet, View, Text, FlatList, ActivityIndicator } from 'react-native';
+import { StyleSheet, View, FlatList, ActivityIndicator } from 'react-native';
 import { useTopHeadLinesNews } from '@/hooks/useNews';
 import { NewsCard } from '@/components';
 
@@ -9,7 +9,7 @@ export default function HomeScreen() {
     <View>
       <FlatList
         data={visibleArticles}
-        keyExtractor={(item, index) => `${item.title}-${index}`}
+        keyExtractor={(item) => `${item.title}`}
         contentContainerStyle={styles.container}
         renderItem={({ item }) => <NewsCard article={item} />}
         onEndReached={() => {
