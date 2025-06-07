@@ -3,7 +3,7 @@ import { Alert } from 'react-native';
 import { httpErrorMessages, networkMessages } from '@/utils/http-messages';
 
 export const api = axios.create({
-    baseURL: `https://gnews.io/api/v4/top-headlines`,
+    baseURL: `https://gnews.io/api/v4/`,
     timeout: 10000,
 });
 
