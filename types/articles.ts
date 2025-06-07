@@ -8,6 +8,8 @@ export type Articles = {
         name: string;
         url: string;
     };
+    formattedDate?: string;
+    formattedTime?: string;
 }
 
 export interface ArticlesData {

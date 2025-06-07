@@ -24,6 +24,13 @@ export default function TabLayout() {
         name="home/index"
         options={{
           title: '',
+          tabBarIcon: ({ color, size, focused }) => (
+            <Ionicons
+              name={focused ? 'home' : 'home-outline'}
+              color={color}
+              size={size}
+            />
+          ),
           headerLeft: () => (
             <Image
               source={require('../../assets/images/logo-1.png')}
