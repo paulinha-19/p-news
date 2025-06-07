@@ -1,28 +1,40 @@
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, FlatList, ActivityIndicator } from 'react-native';
+import { useTopHeadLinesNews } from '@/hooks/useNews';
+import { NewsCard } from '@/components';
 
 export default function HomeScreen() {
+  const { visibleArticles, isLoading, hasMore, loadMore } = useTopHeadLinesNews();
+
   return (
     <View>
-      <Text>HomeScreen</Text>
+      <FlatList
+        data={visibleArticles}
+        keyExtractor={(item, index) => `${item.title}-${index}`}
+        contentContainerStyle={styles.container}
+        renderItem={({ item }) => <NewsCard article={item} />}
+        onEndReached={() => {
+          if (hasMore && !isLoading) loadMore();
+        }}
+        onEndReachedThreshold={0.8}
+        ListFooterComponent={
+          isLoading ? (
+            <View style={styles.loader}>
+              <ActivityIndicator size="large" />
+            </View>
+          ) : null
+        }
+      />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
+  container: {
+    padding: 16,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+  loader: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
