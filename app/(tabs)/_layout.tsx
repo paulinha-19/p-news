@@ -23,7 +23,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="home/index"
         options={{
-          title: '',
+          title: 'Início',
           headerLeft: () => (
             <Image
               source={require('../../assets/images/logo-1.png')}
