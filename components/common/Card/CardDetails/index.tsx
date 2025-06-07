@@ -1,13 +1,14 @@
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, TextStyle } from "react-native";
 
 type CardDetailsProps = {
-    details?: string;
+    details: string;
+    style?: TextStyle;
 };
 
-export default function CardDetails({ details }: CardDetailsProps) {
+export default function CardDetails({ details, style }: CardDetailsProps) {
     return (
         <View style={styles.detailsContainer}>
-            <Text style={styles.details}>{details}</Text>
+            <Text style={[styles.details, style]}>{details}</Text>
         </View>
     )
 }
