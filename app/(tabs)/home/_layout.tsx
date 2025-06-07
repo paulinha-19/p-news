@@ -13,18 +13,18 @@ export default function HomeStack() {
                     headerTitleAlign: "left",
                     headerTitle: "",
                     headerStyle: { backgroundColor: Colors.light.tint },
-                    headerRight: () => (
-                        <Pressable onPress={() => { }} style={{ marginRight: 16 }}>
-                            <Ionicons name="search-outline" size={20} color={Colors.dark.text} />
-                        </Pressable>
-                    ),
                     headerLeft: () => (
                         <Image
                             source={require('../../../assets/images/logo-1.png')}
                             style={{ width: 60, height: 60, marginLeft: 16 }}
                             resizeMode="contain"
                         />
-                    )
+                    ),
+                    headerRight: () => (
+                        <Pressable onPress={() => { }} style={{ marginRight: 16 }}>
+                            <Ionicons name="search-outline" size={20} color={Colors.dark.text} />
+                        </Pressable>
+                    ),
                 }}
             />
             <Stack.Screen
