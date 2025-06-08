@@ -32,7 +32,7 @@ api.interceptors.response.use(
         } else {
             const status = error.response.status;
             const message = httpErrorMessages[status] || networkMessages.default;
-            Alert.alert(`Erro ${status}`, message);
+            Alert.alert(`Erro`, message);
         }
 
         return Promise.reject(error);
