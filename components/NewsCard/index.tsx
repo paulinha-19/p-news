@@ -4,8 +4,8 @@ import { useRouter } from 'expo-router';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import { Card } from '../common/Card';
 import { Articles } from '@/types/articles';
-import { useSelectedArticle } from '@/store/useSelectedArticle';
-import { useFavoriteStore } from '@/store/useFavoriteStore';
+import { useSelectedArticle } from "../../store/useSelectedArticle"
+import { useFavoriteStore } from '../../store/useFavoriteStore';
 
 interface NewsCardProps {
     article: Articles;
@@ -25,7 +25,7 @@ export default function NewsCard({ article }: NewsCardProps) {
     return (
         <View style={{ marginVertical: 20 }}>
             <Card.Root>
-                <Pressable onPress={handlePress}>
+                <Pressable onPress={handlePress} testID="card-pressable">
                     <Card.Media>
                         <Image
                             source={{
@@ -43,7 +43,7 @@ export default function NewsCard({ article }: NewsCardProps) {
                     <Card.Details details={`${article.formattedDate} às ${article.formattedTime}`} style={{ fontSize: 10 }} />
                 </Pressable>
                 <Card.Footer>
-                    <Pressable onPress={() => toggleFavorite(article)} style={{ flexDirection: 'row', justifyContent: 'flex-end', marginTop: 8 }}>
+                    <Pressable testID="favorite-button" onPress={() => toggleFavorite(article)} style={{ flexDirection: 'row', justifyContent: 'flex-end', marginTop: 8 }}>
                         <AntDesign
                             name={isFavorite(article) ? 'heart' : 'hearto'}
                             size={20}
