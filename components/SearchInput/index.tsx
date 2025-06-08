@@ -18,7 +18,7 @@ export function SearchInput({ value, onChangeText, onPress }: SearchInputProps) 
                 returnKeyType="search"
                 style={styles.input}
             />
-            <Pressable onPress={onPress} style={styles.icon}>
+            <Pressable testID="search-button" onPress={onPress} style={styles.icon}>
                 <Ionicons name="search" size={20} color="#888" />
             </Pressable>
         </View>
