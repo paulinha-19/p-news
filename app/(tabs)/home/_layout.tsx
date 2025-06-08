@@ -1,7 +1,6 @@
 import { Stack } from "expo-router";
 import { Colors } from "@/constants/Colors";
 import { Pressable, Image } from "react-native";
-import Ionicons from "@expo/vector-icons/Ionicons";
 import { useRouter } from "expo-router";
 import { useFavoriteStore } from "@/store/useFavoriteStore";
 import AntDesign from "@expo/vector-icons/AntDesign";
@@ -29,9 +28,7 @@ export default function HomeStack() {
                         />
                     ),
                     headerRight: () => (
-                        <Pressable onPress={() => router.push('/(tabs)/home/search')}>
-                            <Ionicons name="search-outline" size={20} color={Colors.dark.text} />
-                        </Pressable>
+                        <AntDesign onPress={() => router.push('/(tabs)/home/search')} name="search1" size={22} color={Colors.dark.text} />
                     ),
                 }}
             />
