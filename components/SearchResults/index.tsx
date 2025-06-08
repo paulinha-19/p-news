@@ -19,7 +19,7 @@ export function SearchResults({ results, loading, hasSearch, lastSearch }: Searc
     return (
         <FlatList
             data={results}
-            keyExtractor={(item) => `${item.title}`}
+            keyExtractor={(item, index) => `${item.title}-${index}`}
             renderItem={({ item }) => <NewsCard article={item} />}
             contentContainerStyle={styles.list}
         />
