@@ -16,7 +16,8 @@
         "foregroundImage": "",
         "backgroundColor": "#C4170C"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.paulinha19.pnews"
     },
     "web": {
       "bundler": "metro",
@@ -37,6 +38,12 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "d188802d-296f-402c-a2ff-126410e5ead8"
+      }
     }
   }
 }
