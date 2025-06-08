@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Image, View, Pressable } from 'react-native';
 import { Card } from '../common/Card';
 import { Articles } from '@/types/articles';
@@ -12,6 +13,7 @@ interface NewsCardProps {
 export default function NewsCard({ article }: NewsCardProps) {
     const router = useRouter();
     const { setSelectedArticle } = useSelectedArticle();
+    const [imageError, setImageError] = useState(false);
 
     const handlePress = () => {
         setSelectedArticle(article);
@@ -26,11 +28,12 @@ export default function NewsCard({ article }: NewsCardProps) {
                         <Image
                             source={{
                                 uri:
-                                    article.image?.trim() !== ''
+                                    !imageError && article.image?.trim()
                                         ? article.image
                                         : 'https://img.freepik.com/vetores-gratis/texto-grunge-de-noticias_460848-9369.jpg',
                             }}
                             style={{ width: '100%', height: 200, borderRadius: 8 }}
+                            onError={() => setImageError(true)}
                         />
                     </Card.Media>
                     <Card.Title text={article.title} />
