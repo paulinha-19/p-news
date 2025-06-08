@@ -9,7 +9,7 @@ export default function HomeScreen() {
     <View>
       <FlatList
         data={visibleArticles}
-        keyExtractor={(item) => `${item.title}`}
+        keyExtractor={(item, index) => `${item.title}-${index}`}
         contentContainerStyle={styles.container}
         renderItem={({ item }) => <NewsCard article={item} />}
         onEndReached={() => {

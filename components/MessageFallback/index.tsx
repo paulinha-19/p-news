@@ -1,12 +1,12 @@
 import React from 'react';
 import { View, Text, ActivityIndicator, StyleSheet } from 'react-native';
 
-interface SearchFallbackProps {
+interface MessageFallbackProps {
     message?: string;
     loading?: boolean;
 }
 
-export function SearchFallback({ message, loading }: SearchFallbackProps) {
+export function MessageFallback({ message, loading }: MessageFallbackProps) {
     return (
         <View style={styles.container}>
             {loading ? (
