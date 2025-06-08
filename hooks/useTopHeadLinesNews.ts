@@ -2,6 +2,7 @@ import { api } from '@/services/api';
 import { Articles, ArticlesData } from '@/types/articles';
 import { articlesFormatted } from '@/utils/articles-formatted';
 import { useEffect, useState } from 'react';
+import { APi_KEY } from '@/constants/setup';
 
 const ITEMS_PER_PAGE = 10;
 
@@ -18,7 +19,7 @@ export function useTopHeadLinesNews(category: string) {
         setVisibleArticles([]);
         setPage(1);
 
-        const response = await api.get<ArticlesData>(`top-headlines?category=${category}&lang=pt&country=br&max=100&apikey=faead60df17e303b0d0035414cc27ac0`);
+        const response = await api.get<ArticlesData>(`top-headlines?category=${category}&lang=pt&country=br&max=100&apikey=${APi_KEY}`);
 
         const formattedArticles = articlesFormatted(response.data.articles);
         setFetchedArticles(formattedArticles);
