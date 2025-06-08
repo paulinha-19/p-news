@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Image, View, Pressable } from 'react-native';
+import { useRouter } from 'expo-router';
+import AntDesign from '@expo/vector-icons/AntDesign';
 import { Card } from '../common/Card';
 import { Articles } from '@/types/articles';
-import EvilIcons from '@expo/vector-icons/EvilIcons';
-import { useRouter } from 'expo-router';
 import { useSelectedArticle } from '@/store/useSelectedArticle';
+import { useFavoriteStore } from '@/store/useFavoriteStore';
 
 interface NewsCardProps {
     article: Articles;
@@ -13,6 +14,7 @@ interface NewsCardProps {
 export default function NewsCard({ article }: NewsCardProps) {
     const router = useRouter();
     const { setSelectedArticle } = useSelectedArticle();
+    const { toggleFavorite, isFavorite } = useFavoriteStore();
     const [imageError, setImageError] = useState(false);
 
     const handlePress = () => {
@@ -21,9 +23,9 @@ export default function NewsCard({ article }: NewsCardProps) {
     };
 
     return (
-        <Pressable onPress={handlePress}>
-            <View style={{ marginVertical: 20 }}>
-                <Card.Root>
+        <View style={{ marginVertical: 20 }}>
+            <Card.Root>
+                <Pressable onPress={handlePress}>
                     <Card.Media>
                         <Image
                             source={{
@@ -39,13 +41,17 @@ export default function NewsCard({ article }: NewsCardProps) {
                     <Card.Title text={article.title} />
                     <Card.Details details={`${article.source.name}`} />
                     <Card.Details details={`${article.formattedDate} às ${article.formattedTime}`} style={{ fontSize: 10 }} />
-                    <Card.Footer>
-                        <View style={{ flexDirection: 'row', justifyContent: "flex-end", marginTop: 8 }}>
-                            <EvilIcons name="heart" size={24} color="black" />
-                        </View>
-                    </Card.Footer>
-                </Card.Root>
-            </View>
-        </Pressable>
+                </Pressable>
+                <Card.Footer>
+                    <Pressable onPress={() => toggleFavorite(article)} style={{ flexDirection: 'row', justifyContent: 'flex-end', marginTop: 8 }}>
+                        <AntDesign
+                            name={isFavorite(article) ? 'heart' : 'hearto'}
+                            size={20}
+                            color={isFavorite(article) ? 'red' : 'black'}
+                        />
+                    </Pressable>
+                </Card.Footer>
+            </Card.Root>
+        </View>
     );
 }
