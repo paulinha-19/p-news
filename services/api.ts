@@ -1,9 +1,10 @@
 import axios from 'axios';
 import { Alert } from 'react-native';
 import { httpErrorMessages, networkMessages } from '@/utils/http-messages';
+import { BASE_URL } from '@/constants/setup';
 
 export const api = axios.create({
-    baseURL: `https://gnews.io/api/v4/`,
+    baseURL: BASE_URL,
     timeout: 10000,
 });
 
