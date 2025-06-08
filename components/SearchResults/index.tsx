@@ -1,8 +1,8 @@
+import { NewsCard } from '@/components';
+import { Articles } from '@/types/articles';
 import React from 'react';
 import { FlatList, StyleSheet } from 'react-native';
-import { NewsCard } from '@/components';
-import { SearchFallback } from '../SearchFallback';
-import { Articles } from '@/types/articles';
+import { MessageFallback } from '../MessageFallback';
 
 interface SearchResultsProps {
     results: Articles[];
@@ -12,9 +12,9 @@ interface SearchResultsProps {
 }
 
 export function SearchResults({ results, loading, hasSearch, lastSearch }: SearchResultsProps) {
-    if (!hasSearch) return <SearchFallback message="Insira palavras-chave para encontrar notícias." />;
-    if (loading) return <SearchFallback loading={loading} />;
-    if (results.length === 0) return <SearchFallback message={`Nenhuma notícia encontrada para "${lastSearch}".`} />;
+    if (!hasSearch) return <MessageFallback message="Insira palavras-chave para encontrar notícias." />;
+    if (loading) return <MessageFallback loading={loading} />;
+    if (results.length === 0) return <MessageFallback message={`Nenhuma notícia encontrada para "${lastSearch}".`} />;
 
     return (
         <FlatList
