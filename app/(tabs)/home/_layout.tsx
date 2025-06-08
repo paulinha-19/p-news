@@ -3,9 +3,15 @@ import { Colors } from "@/constants/Colors";
 import { Pressable, Image } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { useRouter } from "expo-router";
+import { useFavoriteStore } from "@/store/useFavoriteStore";
+import AntDesign from "@expo/vector-icons/AntDesign";
+import { useSelectedArticle } from "@/store/useSelectedArticle";
 
 export default function HomeStack() {
     const router = useRouter();
+    const { toggleFavorite, isFavorite } = useFavoriteStore();
+    const { selectedArticle } = useSelectedArticle();
+
     return (
         <Stack screenOptions={{ headerShown: true }}>
             <Stack.Screen
@@ -36,11 +42,16 @@ export default function HomeStack() {
                     headerTitleAlign: "left",
                     headerTitle: "",
                     headerTitleStyle: { fontSize: 20 }, headerTintColor: "white", headerStyle: { backgroundColor: Colors.light.tint },
-                    headerRight: () => (
-                        <Pressable onPress={() => { }} style={{ marginRight: 16 }}>
-                            <Ionicons name="heart-outline" size={20} color="white" />
-                        </Pressable>
-                    ),
+                    headerRight: () =>
+                        selectedArticle && (
+                            <Pressable onPress={() => toggleFavorite(selectedArticle)} style={{ marginRight: 16 }}>
+                                <AntDesign
+                                    name={isFavorite(selectedArticle) ? 'heart' : 'hearto'}
+                                    size={20}
+                                    color="white"
+                                />
+                            </Pressable>
+                        )
                 }}
             />
             <Stack.Screen
