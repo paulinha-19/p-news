@@ -29,10 +29,17 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="favorites"
         options={{
-          title: 'Explore',
-
+          title: 'Favoritos',
+          headerShown: true,
+          tabBarIcon: ({ color, size, focused }) => (
+            <Ionicons
+              name={focused ? 'heart' : 'heart-outline'}
+              color={color}
+              size={size}
+            />
+          )
         }}
       />
     </Tabs>
