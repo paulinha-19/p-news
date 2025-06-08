@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 
 const ITEMS_PER_PAGE = 10;
 
-export function useTopHeadLinesNews() {
+export function useTopHeadLinesNews(category: string) {
     const [fetchedArticles, setFetchedArticles] = useState<Articles[]>([]);
     const [visibleArticles, setVisibleArticles] = useState<Articles[]>([]);
     const [page, setPage] = useState(1);
@@ -13,11 +13,12 @@ export function useTopHeadLinesNews() {
     const hasMore = visibleArticles.length < fetchedArticles.length;
 
     const getArticles = async () => {
-        if (isLoading || fetchedArticles.length > 0) return;
-
         setIsLoading(true);
+        setFetchedArticles([]);
+        setVisibleArticles([]);
+        setPage(1);
 
-        const response = await api.get<ArticlesData>(`top-headlines?category=general&lang=pt&country=br&max=100&apikey=8f09de77cad3d4dbc608b4e6ca413029`);
+        const response = await api.get<ArticlesData>(`top-headlines?category=${category}&lang=pt&country=br&max=100&apikey=faead60df17e303b0d0035414cc27ac0`);
 
         const formattedArticles = articlesFormatted(response.data.articles);
         setFetchedArticles(formattedArticles);
@@ -31,14 +32,14 @@ export function useTopHeadLinesNews() {
 
         const nextPage = page + 1;
         const start = (nextPage - 1) * ITEMS_PER_PAGE;
-        const nextArticles  = fetchedArticles.slice(start, start + ITEMS_PER_PAGE);
+        const nextArticles = fetchedArticles.slice(start, start + ITEMS_PER_PAGE);
 
-        setVisibleArticles((prev) => [...prev, ...nextArticles ]);
+        setVisibleArticles((prev) => [...prev, ...nextArticles]);
         setPage(nextPage);
     };
 
     useEffect(() => {
         getArticles();
-    }, []);
+    }, [category]);
     return { visibleArticles, isLoading, hasMore, loadMore };
 }

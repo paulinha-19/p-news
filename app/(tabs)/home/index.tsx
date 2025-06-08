@@ -1,12 +1,16 @@
+import { useState } from 'react';
 import { StyleSheet, View, FlatList, ActivityIndicator } from 'react-native';
-import { useTopHeadLinesNews } from '@/hooks/useNews';
+import { useTopHeadLinesNews } from '@/hooks/useTopHeadLinesNews';
 import { NewsCard } from '@/components';
+import { FilterByCategory } from '@/components/FIlterByCategory';
 
 export default function HomeScreen() {
-  const { visibleArticles, isLoading, hasMore, loadMore } = useTopHeadLinesNews();
+  const [selectedCategory, setSelectedCategory] = useState('general');
+  const { visibleArticles, isLoading, hasMore, loadMore } = useTopHeadLinesNews(selectedCategory);
 
   return (
-    <View>
+    <View style={{ flex: 1 }}>
+      <FilterByCategory selected={selectedCategory} onSelect={setSelectedCategory} />
       <FlatList
         data={visibleArticles}
         keyExtractor={(item, index) => `${item.title}-${index}`}
