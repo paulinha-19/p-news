@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, Image, StyleSheet, Pressable } from 'react-native';
 import { Articles } from '@/types/articles';
 
@@ -8,17 +8,20 @@ interface NewsDetailsProps {
 }
 
 export function NewsDetails({ article, onPress }: NewsDetailsProps) {
+    const [imageError, setImageError] = useState(false);
+
     return (
         <View>
             <Image
                 source={{
                     uri:
-                        article.image?.trim() !== ''
+                        !imageError && article.image?.trim()
                             ? article.image
                             : 'https://img.freepik.com/vetores-gratis/texto-grunge-de-noticias_460848-9369.jpg',
                 }}
                 style={styles.image}
                 resizeMode="cover"
+                onError={() => setImageError(true)}
             />
 
             <View style={styles.detailsContainer}>
