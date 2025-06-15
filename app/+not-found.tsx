@@ -1,5 +1,5 @@
-import { Stack } from 'expo-router';
-import { StyleSheet, View } from 'react-native';
+import { Stack, Link } from 'expo-router';
+import { StyleSheet, View, Text } from 'react-native';
 
 
 export default function NotFoundScreen() {
@@ -7,7 +7,10 @@ export default function NotFoundScreen() {
     <>
       <Stack.Screen options={{ title: 'Oops!' }} />
       <View style={styles.container}>
-        This screen does not exist
+        <Text>This screen does not exist</Text>
+        <Link href="/(tabs)/home" style={styles.link}>
+          Go to home screen!
+        </Link>
       </View>
     </>
   );
