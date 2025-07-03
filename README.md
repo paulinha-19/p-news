@@ -29,6 +29,36 @@ npx expo start
 
 ---
 
+## Telas
+![image](https://github.com/user-attachments/assets/03a9485d-3fc1-4a68-a3cc-fd559476e0b3)
+
+![image](https://github.com/user-attachments/assets/53a8dec7-2195-474f-b8f6-0a469fb0408f)
+
+![image](https://github.com/user-attachments/assets/2aef8e74-16e1-4b93-be24-e06fbbca2462)
+
+![image](https://github.com/user-attachments/assets/9b812908-28d3-4224-ad93-c4dedd642794)
+
+![image](https://github.com/user-attachments/assets/90b053eb-704a-458e-806b-e4af69c7c219)
+
+![image](https://github.com/user-attachments/assets/cd281968-21a9-40cb-899c-c9e28aee96a7)
+
+![image](https://github.com/user-attachments/assets/408d2df7-8b1e-42f5-9ddf-66ecb915e0a6)
+
+![image](https://github.com/user-attachments/assets/938bb6b2-777b-474b-b1d4-bff136a831bd)
+
+![image](https://github.com/user-attachments/assets/85859382-d0af-4dad-b8eb-77405293950f)
+
+![image](https://github.com/user-attachments/assets/c091818c-8332-4aa5-8c12-636eb0fd22cf)
+
+![image](https://github.com/user-attachments/assets/b42ca37e-affa-46c5-831e-dee56d9f5583)
+
+![image](https://github.com/user-attachments/assets/d899da94-99c3-498b-8b98-6e997b7997cf)
+
+![image](https://github.com/user-attachments/assets/90989aa4-56d0-493f-9a26-2c25f5e70cb1)
+
+![image](https://github.com/user-attachments/assets/62f5c899-e613-4211-93a8-46933122cd61)
+
+
 ## 🧠 Decisões Técnicas
 
 ### 1. **Composition Pattern no Card**
